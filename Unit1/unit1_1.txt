@@ -1,0 +1,73 @@
+Agent:
+reaons -> plan -> interact
+
+An Agent is a system that leverages an AI model to interact with its environment 
+in order to achieve a user-defined objective. It combines reasoning, planning, and 
+the execution of actions (often via external tools) to fulfill tasks
+
+AI model:
+handle reasonsing and planning.
+
+Capabilities nad tools:
+the extent of actions the model can perform i.e. the tools available to it
+
+Read up on NLP: https://huggingface.co/learn/nlp-course/chapter1/1
+
+LLM:
+Large language model, excels at understanding and genrating human language.
+Built on transformer architecture
+
+Types of transformers:
+
+1. Encoder:
+input as text, output as dense representation of text -> Semantic search, text classification, named entity recognition.
+Millions of parameters
+
+2. Decorders:
+generate new tokens to complete a sequence, one token at a time
+Llama from Meta
+text generation, chatbots, code generation
+Billions of parameters
+
+3. Seq2Seq
+Encoder Decoder
+encoder + decoder
+process input sequence into context representation and then decoder generates an output sequence
+translation, summarisation, paraphrasing
+millions of parameters
+
+LLms are mostly decoder based with billions of params
+
+A word might be many tokens -> interesting -> [interest][ing]
+
+Special tokens
+unique symbols in language models that serve specific purposes
+act like markers
+organize and manage how the LLM processes the data
+can help FINE_TUNE model
+
+<bos> Some sequence <eos> -> "bos" means beginnning of sequence and "eos" means end of sequence here
+detailed explanation here: https://inside-machinelearning.com/en/special-tokens/
+
+autoregressive -> input is added to output of previous pass.
+This loop continued till end of sequence token
+
+how decoding works:
+tokenize input: https://docs.mistral.ai/guides/tokenization/#:~:text=In%20a%20typical%20LLM%20workflow,embedding%20layer%20and%20transformer%20blocks.
+  - We first encode the input text into tokens using a tokenizer. Each unique token is assigned a specific 
+  index number in the tokenizer’s vocabulary.
+  - Once the text is tokenized, these tokens are passed through the model, which typically includes an 
+  embedding layer and transformer blocks. The embedding layer converts the tokens into dense vectors 
+  that capture semantic meanings. Check out our embedding guide for details. The transformer blocks 
+  then process these embedding vectors to understand the context and generate results.
+  - The last step is decoding, which detokenize output tokens back to human-readable text. 
+  This is done by mapping the tokens back to their corresponding words using the tokenizer’s vocabulary
+model computes a representation of the sequence that captures information about the meaning 
+and the position of each token in the input sequence.
+This representation goes into the model, which outputs scores that rank the likelihood of each 
+token in its vocabulary as being the next one in the sequence
+ALTERNATIVE SEARCH: beam search explores multiple candidate sequences to find the one with the 
+maximum total score–even if some individual tokens have lower scores
+
+
+
